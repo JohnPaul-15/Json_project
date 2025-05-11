@@ -4,7 +4,6 @@
 import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
 import { useUsers } from '@/hooks/useUsers';
 import { User } from '@/types';
-import type { Comment, Post } from '@/types';
 
 // Default coordinates (Bulanc)
 const DEFAULT_CENTER = { 

@@ -2,6 +2,7 @@
 
 import { useUsers } from '@/hooks/useUsers';
 import Link from 'next/link';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 
 export default function UsersPage() {
   const { data: users, loading, error } = useUsers();

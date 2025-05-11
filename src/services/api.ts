@@ -1,6 +1,4 @@
 // src/services/api.ts
-import { useQuery } from '@tanstack/react-query';
-import { notFound } from 'next/navigation';
 import type { Post, Comment } from '@/types';
 import { 
   fetchUser as mockFetchUser, 

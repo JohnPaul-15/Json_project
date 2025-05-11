@@ -88,7 +88,11 @@ export const fetchUser = (userId: number): Promise<User> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const user = mockUsers.find(u => u.id === userId);
-      user ? resolve(user) : reject(new Error("User not found"));
+      if (user) {
+        resolve(user);
+      } else {
+        reject(new Error("User not found"));
+      }
     }, 300);
   });
 };
@@ -104,7 +108,11 @@ export const fetchPost = (postId: number): Promise<Post> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const post = mockPosts.find(p => p.id === postId);
-      post ? resolve(post) : reject(new Error("Post not found"));
+      if (post) {
+        resolve(post);
+      } else {
+        reject(new Error("Post not found"));
+      }
     }, 300);
   });
 };
@@ -129,3 +137,6 @@ export const fetchAllComments = (): Promise<Comment[]> => {
     setTimeout(() => resolve(mockComments), 300);
   });
 };
+
+// Explicitly export types for better documentation
+export type { User, Post, Comment };

@@ -1,7 +1,6 @@
 // components/StatsChart.tsx
 'use client';
 import dynamic from 'next/dynamic';
-import type { Comment, Post } from '@/types';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 

@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { Post } from '@/types';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 
 export default function PostsPage() {
   const router = useRouter();
@@ -14,7 +15,6 @@ export default function PostsPage() {
   });
 
   if (isLoading) return (
-    
     <div className="p-4 max-w-4xl mx-auto space-y-4">
       {[...Array(5)].map((_, i) => (
         <div key={i} className="p-4 border rounded-lg animate-pulse">

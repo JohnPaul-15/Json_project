@@ -1,7 +1,6 @@
 'use client';
 import { useUsers } from '@/hooks/useUsers';
 import dynamic from 'next/dynamic';
-import type { Comment, Post } from '@/types';
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 export default function Charts() {
