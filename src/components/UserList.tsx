@@ -6,7 +6,7 @@ export default function UserList() {
   const { data: users, loading, error } = useUsers();
 
   if (loading) return <div>Loading users...</div>;
-  if (error) return <div className="text-red-500">Error: {error}</div>;
+  if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   return (
     <div className="space-y-2">

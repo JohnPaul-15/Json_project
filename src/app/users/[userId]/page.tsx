@@ -4,6 +4,7 @@ import { useUser } from '@/hooks/useUser';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import React from 'react';
+import { SkeletonLoader } from '@/components/SkeletonLoader';
 
 // Modern approach with React.use()
 export default function UserProfile({ params }: { params: Promise<{ userId: string }> }) {
@@ -15,7 +16,10 @@ export default function UserProfile({ params }: { params: Promise<{ userId: stri
 
   const { data: user, loading, error } = useUser(userId);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="p-4 border rounded-lg">
+        <div className="h-6 bg-gray-200 rounded-full w-1/2 mb-3 animate-pulse"></div>
+        <div className="h-4 bg-gray-200 rounded-full w-3/4 animate-pulse"></div>
+      </div>;
   if (error) return (
     <div className="text-red-500 p-4">
       <p>Error: {error.message}</p>

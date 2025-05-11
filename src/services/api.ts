@@ -1,4 +1,7 @@
 // src/services/api.ts
+import { useQuery } from '@tanstack/react-query';
+import { notFound } from 'next/navigation';
+import type { Post, Comment } from '@/types';
 import { 
   fetchUser as mockFetchUser, 
   fetchUsers as mockFetchUsers 
@@ -18,4 +21,17 @@ export const fetchUser = (userId: number) => {
 // Multiple users fetch (ADD THIS)
 export const fetchUsers = () => {
   return USE_MOCK_API ? mockFetchUsers() : realFetchUsers();
+};
+
+// services/api.ts
+export const fetchPost = async (id: number): Promise<Post> => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  if (!res.ok) throw new Error('Failed to fetch post');
+  return res.json();
+};
+
+export const fetchComments = async (postId: number): Promise<Comment[]> => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+  if (!res.ok) throw new Error('Failed to fetch comments');
+  return res.json();
 };

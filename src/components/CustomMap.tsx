@@ -4,6 +4,7 @@
 import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
 import { useUsers } from '@/hooks/useUsers';
 import { User } from '@/types';
+import type { Comment, Post } from '@/types';
 
 // Default coordinates (Bulanc)
 const DEFAULT_CENTER = { 
@@ -27,16 +28,19 @@ export default function CustomMap() {
     DEFAULT_CENTER;
 
   if (loading) return (
-    <div className="h-[400px] flex items-center justify-center bg-gray-100 rounded-lg">
+    <div className="h-[400px] flex items-center justify-center bg-gray-50 rounded-lg">
+    <div className="text-center">
+      <div className="mx-auto h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-2"></div>
       <p>Loading map data...</p>
     </div>
+  </div>
   );
 
   if (error) return (
-    <div className="h-[400px] flex items-center justify-center bg-red-50 text-red-600 rounded-lg">
-      <p>Error loading user locations: {error}</p>
-    </div>
-  );
+  <div className="h-[400px] flex items-center justify-center bg-red-50 text-red-600 rounded-lg">
+    <p>Error loading user locations: {error.message}</p>
+  </div>
+);
 
   return (
     <div className="rounded-lg overflow-hidden shadow">
