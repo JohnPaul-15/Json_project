@@ -1,4 +1,6 @@
 // src/hooks/useUsers.ts
+'use client';
+
 import { useState, useEffect } from 'react';
 import { fetchUsers } from '@/services/api';
 import type { User } from '@/types';
@@ -6,19 +8,16 @@ import type { User } from '@/types';
 export function useUsers() {
   const [data, setData] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<Error | null>(null); // Changed to Error type
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('Fetching users...'); // Debug
         const users = await fetchUsers();
-        console.log('Received users:', users); // Debug
         setData(users);
         setError(null);
       } catch (err) {
-        console.error('Fetch error:', err);
-        setError(err instanceof Error ? err.message : 'Failed to load users');
+        setError(err instanceof Error ? err : new Error('Failed to fetch users'));
       } finally {
         setLoading(false);
       }
