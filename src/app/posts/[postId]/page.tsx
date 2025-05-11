@@ -21,10 +21,9 @@ function PostContent({ postId }: { postId: number }) {
       fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`).then(res => res.json())
   });
 
-  if (postLoading) return <div className="p-4 border rounded-lg">
-        <div className="h-6 bg-gray-200 rounded-full w-1/2 mb-3 animate-pulse"></div>
-        <div className="h-4 bg-gray-200 rounded-full w-3/4 animate-pulse"></div>
-      </div>;;
+  if (postLoading) return  <div className="p-4 max-w-2xl mx-auto">
+      <SkeletonLoader lines={4} />
+    </div>
   if (!post) notFound();
 
   return (

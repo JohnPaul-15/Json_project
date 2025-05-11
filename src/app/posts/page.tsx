@@ -16,12 +16,9 @@ export default function PostsPage() {
 
   if (isLoading) return (
     <div className="p-4 max-w-4xl mx-auto space-y-4">
-      {[...Array(5)].map((_, i) => (
-        <div key={i} className="p-4 border rounded-lg animate-pulse">
-          <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
-          <div className="h-4 bg-gray-200 rounded w-full"></div>
-        </div>
-      ))}
+      <SkeletonLoader lines={3} className="h-16" />
+      <SkeletonLoader lines={3} className="h-16" />
+      <SkeletonLoader lines={3} className="h-16" />
     </div>
   );
 
