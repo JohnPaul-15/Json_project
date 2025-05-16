@@ -39,6 +39,13 @@ export default function PostsPage() {
         <p className="text-gray-500 mt-2">Stay updated with the latest posts and articles</p>
       </header>
 
+       {/* Back to Dashboard Link */}
+      <div className="text-left mt-6">
+        <Link href="/" className="text-blue-600 hover:underline text-sm font-medium">
+          ← Back to Dashboard
+        </Link>
+      </div>
+
       {/* Posts List */}
       <div className="space-y-6">
         {posts?.map(post => (
